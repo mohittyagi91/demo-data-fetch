@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BEARER_TOKEN = process.env.BEARER_TOKEN; // Replace this with your actual token
-
-export async function GET(request: NextRequest,
-  { params }: { params: Promise<{ username: string }> },) {
+export async function GET(
+  { params }: { params: Promise<{ username: string }> }) {
     const { username } = await params;
 
   if (!username) {
@@ -19,7 +17,7 @@ export async function GET(request: NextRequest,
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${BEARER_TOKEN}`,
+          Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
         },
       }
     );
@@ -32,7 +30,7 @@ export async function GET(request: NextRequest,
   });
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to fetch data from Twitter API.' },
+      { error: error },
       { status: 500 }
     );
   }
