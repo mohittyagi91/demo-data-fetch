@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import ollama from "ollama";
 
 // app/api/post-data/route.js
