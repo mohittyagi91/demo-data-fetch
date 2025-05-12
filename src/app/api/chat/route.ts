@@ -1,7 +1,8 @@
+import { NextRequest } from "next/server";
 import ollama from "ollama";
 
 // app/api/post-data/route.js
-export async function POST() {
+export async function POST(req:NextRequest) {
   try {
     const getResponse = await fetch('http://localhost:3000/api/user/SrBachchan');  // Update the URL if deployed
     

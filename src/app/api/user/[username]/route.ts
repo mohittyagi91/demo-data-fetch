@@ -1,7 +1,7 @@
-import {NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(
-  { params }: { params: Promise<{ username: string }> }) {
+export async function GET(request: NextRequest,
+  { params }: { params: Promise<{ username: string }> },) {
     const { username } = await params;
 
   if (!username) {
@@ -30,7 +30,7 @@ export async function GET(
   });
   } catch (error) {
     return NextResponse.json(
-      { error: error },
+      { error: 'Failed to fetch data from Twitter API.' },
       { status: 500 }
     );
   }
